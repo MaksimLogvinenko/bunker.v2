@@ -5,7 +5,7 @@
 .category-slider .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
-  background-color: #ff9f0d;
+  background-color: #f4511f;
 }
 
 @media (max-width: 1024px) {
@@ -21,7 +21,7 @@
 .new-menu-slider .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
-  background-color: #ff9f0d;
+  background-color: #f4511f;
 }
 
 @media (max-width: 1024px) {
@@ -37,7 +37,7 @@
 .comment-slider .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
-  background-color: #ff9f0d;
+  background-color: #f4511f;
 }
 
 @media (max-width: 1024px) {

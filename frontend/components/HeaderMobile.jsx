@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+//img
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const HeaderMobile = ({ menuList, showMenu, setShowMenu }) => {
@@ -25,7 +26,7 @@ const HeaderMobile = ({ menuList, showMenu, setShowMenu }) => {
       <div className="container">
         <div className="flex flex-col">
           <h5 className="text-primary text-4xl text-center font-bold mb-16">
-            Valhalla <span className="text-white">cafe</span>
+            Bunker <span className="text-white">cafe</span>
           </h5>
           <nav className="flex justify-center">
             <ul className="flex flex-col gap-8 text-center">

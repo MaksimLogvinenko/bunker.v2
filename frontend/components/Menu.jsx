@@ -14,8 +14,8 @@ const Menu = () => {
           <button
             key={`${item}_${index}`}
             className={`${
-              currentCategorie === item ? "bg-primary text-black" : "bg-gray"
-            } px-3 py-2 font-medium rounded-md duration-300 min-w-max w-full hover:bg-primary hover:text-black`}
+              currentCategorie === item ? "bg-primary" : "bg-gray"
+            } px-3 py-2 font-medium rounded-md duration-300 min-w-max w-full hover:bg-primary`}
             onClick={() => setCurrentCategorie(item)}
           >
             {item}

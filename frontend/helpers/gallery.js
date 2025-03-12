@@ -24,7 +24,7 @@ export const galleryList = [
   },
   {
     img: Gallery3Img,
-    alt: "Велика зала",
+    alt: "Літня площадка",
   },
   {
     img: Gallery4Img,
@@ -36,31 +36,31 @@ export const galleryList = [
   },
   {
     img: Gallery6Img,
-    alt: "VIP кімната",
+    alt: "Велика зала",
   },
   {
     img: Gallery7Img,
-    alt: "VIP кімната",
+    alt: "Велика зала",
   },
   {
     img: Gallery8Img,
-    alt: "VIP кімната",
+    alt: "Велика зала",
   },
   {
     img: Gallery9Img,
-    alt: "VIP кімната",
+    alt: "Барна стійка",
   },
   {
     img: Gallery10Img,
-    alt: "VIP кімната",
+    alt: "Барна стійка",
   },
   {
     img: Gallery11Img,
-    alt: "Велика кімната",
+    alt: "Велика зала",
   },
   {
     img: Gallery12Img,
-    alt: "Велика кімната",
+    alt: "Бар",
   },
   {
     img: Gallery13Img,
@@ -68,6 +68,6 @@ export const galleryList = [
   },
   {
     img: Gallery14Img,
-    alt: "Бар",
+    alt: "Барна стійка",
   },
 ];

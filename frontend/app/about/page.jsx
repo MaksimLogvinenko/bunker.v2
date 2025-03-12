@@ -1,18 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ImSpoonKnife } from "react-icons/im";
-
+//img
 import MainBgImg from "@/assets/img/about/main-bg.jpg";
 import About1Img from "@/assets/img/home/about-1.jpg";
 import About2Img from "@/assets/img/home/about-2.png";
 import About3Img from "@/assets/img/home/about-3.png";
 import DeliveryImg from "@/assets/img/about/delivery.png";
+import { ImSpoonKnife } from "react-icons/im";
 
 export const metadata = {
-  title: "Valhalla cafe - Про нас",
+  title: "Кафе Bunker - Фастів | Про нас",
   description:
-    "В кафе «Valhalla» на вас чекає вишукана Європейська кухня, привітний персонал і приємна атмосфера. Швидка доставка та смачні, комплексні обіди по місту. Проведення банкетів, VIP-кімната та якісне обслуговування.",
+    "Кафе Bunker місто Фастів, Кафе Bunker з дружньою атмосферою розташоване недалеко від центра міста. Ми завжди радіємо нашим гостям. Тут Ви можете скуштувати різноманітну кухню від українського борщика до американського бургера. Це місце в якому можна гарно відпочити, зустрітися з друзями, та відволіктися від буденних справ. Ти точно захочеш сюди повернутися.",
 };
 
 const About = () => {
@@ -40,19 +40,19 @@ const About = () => {
           <div className="flex items-start gap-[100px] md:gap-10 sm:flex-col">
             <div className="grid grid-cols-2 grid-rows-[auto,minmax(0,auto)] gap-4 w-1/2 sm:w-full">
               <Image
-                className="w-full col-span-2 rounded-md h-[330px] object-cover object-center sm:h-auto"
+                className="w-full col-span-2 rounded-md h-[330px] object-cover object-bottom sm:h-auto"
                 src={About1Img}
                 alt=""
                 placeholder="blur"
               />
               <Image
-                className="w-full row-start-2 rounded-md h-[195px] object-cover object-center sm:h-auto"
+                className="w-full row-start-2 rounded-md h-[195px] object-cover object-bottom sm:h-auto"
                 src={About2Img}
                 alt=""
                 placeholder="blur"
               />
               <Image
-                className="w-full row-start-2 rounded-md h-[195px] object-cover object-center sm:h-auto"
+                className="w-full row-start-2 rounded-md h-[195px] object-cover object-bottom sm:h-auto"
                 src={About3Img}
                 alt=""
                 placeholder="blur"
@@ -65,16 +65,23 @@ const About = () => {
                 <span className="text-primary">Пр</span>о наш заклад
               </h2>
               <p className="paragraph-section mb-6">
-                В кафе "Valhalla" на вас чекає вишукана Європейська кухня, яка
-                вражає різноманіттям смаків та вишуканістю страв. Наш привітний
-                персонал завжди готовий зробити ваше відвідування приємним та
-                комфортним, надаючи вам високий рівень обслуговування. У
-                "Valhalla" ви можете також скористатися швидкою доставкою та
-                насолоджуватися смачними, комплексними обідами прямо до вашого
-                дому. Ми також пропонуємо проведення банкетів у нашому затишному
-                закладі, VIP-кімнату для особливих подій та завжди гарантуємо
-                якісне обслуговування на кожному етапі вашого перебування у
-                "Valhalla".
+                Кафе Bunker з дружньою атмосферою розташоване недалеко від
+                центра міста. Ми завжди радіємо нашим гостям і готові смачно їх
+                нагодувати! Це місце, в якому можна гарно відпочити, зустрітися
+                з друзями та відволіктися від буденних справ. Ти точно захочеш
+                сюди повернутися.
+                <br />
+                <br />
+                У нашому меню ти знайдеш страви на будь-який смак – від ситних
+                сніданків до вишуканих десертів. Ми використовуємо тільки свіжі
+                та якісні інгредієнти, щоб кожна страва приносила справжнє
+                задоволення.
+                <br />
+                <br />
+                Затишний інтер’єр, приємна музика та привітний персонал
+                створюють особливу атмосферу, в якій кожен почувається як удома.
+                Завітай до нас, щоб насолодитися чудовою кухнею, ароматною кавою
+                та незабутнім відпочинком!
               </p>
             </div>
           </div>
@@ -99,7 +106,7 @@ const About = () => {
                 </h5>
               </div>
               <p>
-                У кафе "Valhalla" ми розуміємо, що іноді ви хочете насолодитися
+                У кафе Bunker ми розуміємо, що іноді ви хочете насолодитися
                 нашими вишуканими стравами прямо вдома. Тому ми з радістю
                 пропонуємо послугу швидкої доставки до вашого дому, де ви
                 зможете насолоджуватися смаком наших страв, не виходячи з

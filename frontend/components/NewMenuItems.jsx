@@ -3,7 +3,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { menuList } from "@/helpers/menu";
-
+//styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "@/assets/css/swiper.css";

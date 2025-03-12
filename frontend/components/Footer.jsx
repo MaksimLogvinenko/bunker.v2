@@ -1,12 +1,20 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+import { menuList, social } from "@/helpers/variebles";
+//img
 import { PiClockClockwise } from "react-icons/pi";
 import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
 import { FaViber } from "react-icons/fa";
 
-import { menuList, social } from "@/helpers/variebles";
-
 const Footer = () => {
+  const [currYear, setCurrYear] = React.useState(2025);
+
+  React.useEffect(() => {
+    const date = new Date();
+    setCurrYear(date.getFullYear());
+  }, []);
+
   return (
     <footer className="pt-[70px] sm:pt-[50px]">
       <div className="container">
@@ -14,8 +22,8 @@ const Footer = () => {
           <div className="flex-col w-1/3 sm:w-full">
             <h3 className="text-2xl font-bold mb-6 sm:mb-3">Про нас</h3>
             <p className="font-inter mb-8 md:text-xs">
-              В кафе «Valhalla» на вас чекає вишукана Європейська кухня,
-              привітний персонал і приємна атмосфера.
+              В кафе «Bunker» на вас чекає вишукана кухня, привітний персонал і
+              приємна атмосфера.
             </p>
             <div className="flex items-start">
               <div className="flex items-center justify-center w-[75px] h-[75px] rounded-md bg-primary mr-4 md:w-10 md:h-10">
@@ -24,7 +32,7 @@ const Footer = () => {
               <div className="flex flex-col">
                 <h4 className="font-inter text-lg">Графік роботи</h4>
                 <span className="text-sm font-inter">
-                  Пн - Нд (9:00 - 23:00)
+                  Пн - Нд (9:00 - 22:00)
                 </span>
               </div>
             </div>
@@ -81,7 +89,7 @@ const Footer = () => {
       <div className="bg-gray py-5">
         <div className="container">
           <p className="font-inter text-sm sm:text-xs sm:text-center">
-            © 2023 Кафе "Valhalla". Розроблено WebDoze Studio. Всі права
+            © {currYear} Кафе "Bunker". Розроблено WebDoze Studio. Всі права
             захищено.
           </p>
         </div>

@@ -2,11 +2,11 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
 import { menuList } from "@/helpers/variebles";
-
+//components
 import Header from "@/components/Header";
 import HeaderMobile from "@/components/HeaderMobile";
 import Footer from "@/components/Footer";
-
+//styles
 import "react-toastify/dist/ReactToastify.css";
 import "@/assets/css/fonts.css";
 import "@/styles/globals.css";
@@ -24,7 +24,6 @@ export default function RootLayout({ children }) {
           showMenu={showMenu}
           setShowMenu={setShowMenu}
         />
-
         {children}
         <Footer />
       </body>

@@ -2,14 +2,14 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { commentsList } from "@/helpers/variebles";
-
-import CommentIconImg from "@/assets/img/home/comment-icon.png";
-
+//styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "@/assets/css/swiper.css";
+//img
+import CommentIconImg from "@/assets/img/home/comment-icon.png";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const CommentSlider = () => {
   return (
@@ -29,7 +29,9 @@ const CommentSlider = () => {
               src={CommentIconImg.src}
               alt={item.comment}
             />
-            <p className="text-lg text-center mb-5 sm:text-base">{item.comment}</p>
+            <p className="text-lg text-center mb-5 sm:text-base">
+              {item.comment}
+            </p>
             <h5 className="text-2lg font-bold text-center mb-[30px]">
               {item.author}
             </h5>

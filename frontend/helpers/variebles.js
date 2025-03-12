@@ -32,7 +32,7 @@ export const commentsList = [
     author: "Владислав К.",
   },
   {
-    star: 4,
+    star: 5,
     comment:
       "Завітали до закладу у суботу, не дивлячись на повну посадку, все було дуже якісно швидко та смачно, найкращий заклад в місті!",
     author: "Марія К.",
@@ -46,17 +46,17 @@ export const commentsList = [
 ];
 
 export const social = {
-  instagram: "https://instagram.com/valhalla._cafe?igshid=YzAwZjE1ZTI0Zg==",
-  viber: "viber://chat?number=%2B380930051243",
+  instagram: "https://www.instagram.com/bunker_cafe_fastiv",
+  viber: "viber://chat?number=%2B380933817902",
   facebook:
-    "https://www.facebook.com/people/Valhalla-Valhalla/pfbid02fBW1xTEVZbjYbgDzwXiHPLmmHgtWoe318WRzRTDrKuTD1UKJp8ZLBgCUyhpjEwtBl/",
+    "https://www.facebook.com/people/Bunker_Cafe_Fastiv/100063219220246",
 };
 
 export const contacts = [
   {
     icon: AiOutlinePhone,
-    link: "tel:380930051243",
-    title: "+38(093) 005 12 43",
+    link: "tel:380933817902",
+    title: "+38 (093) 381 7902",
     target: "_self",
   },
   {
@@ -67,8 +67,8 @@ export const contacts = [
   },
   {
     icon: IoLocationOutline,
-    link: "https://www.google.com/maps/dir//VALHALLA,+%D0%BF%D1%80%D0%BE%D0%B2%D1%83%D0%BB%D0%BE%D0%BA+%D0%AF%D1%80%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D0%B0+%D0%9C%D1%83%D0%B4%D1%80%D0%BE%D0%B3%D0%BE,+41+%D0%90,+%D0%A4%D0%B0%D1%81%D1%82%D1%96%D0%B2,+%D0%9A%D0%B8%D1%97%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB.,+08500/@50.0839138,29.8665405,13z/data=!4m17!1m7!3m6!1s0x40d355818ad2e4c9:0xe9a9d7ec0b9b1215!2sVALHALLA!8m2!3d50.083866!4d29.9078257!16s%2Fg%2F11vhh7v83t!4m8!1m0!1m5!1m1!1s0x40d355818ad2e4c9:0xe9a9d7ec0b9b1215!2m2!1d29.9078257!2d50.083866!3e2?entry=ttu",
-    title: "пр. Ярослава Мудрого, 41 А",
+    link: "https://www.google.com/maps/place/Bunker+Cafe/@50.0821347,29.9207861,17z/data=!3m1!4b1!4m6!3m5!1s0x40d355fae3efc45d:0x1e311dbccb6104d4!8m2!3d50.0821347!4d29.9233664!16s%2Fg%2F11qy71g3y5?entry=ttu&g_ep=EgoyMDI1MDMwOC4wIKXMDSoASAFQAw%3D%3D",
+    title: "Україна, м.Фастів, вулиця Івана Ступака, 23",
     target: "_blank",
   },
 ];

@@ -31,7 +31,7 @@ const GalleryPhotos = () => {
           >
             <Image
               src={item.img}
-              alt={`Valhalla Cafe - ${item.alt} | місто Фастів`}
+              alt={`Кафе Bunker - ${item.alt} | місто Фастів`}
               placeholder="blur"
               key={index}
               className="w-full h-full object-cover object-center rounded-md duration-300 "

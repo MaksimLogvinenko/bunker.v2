@@ -2,17 +2,12 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { social, contacts } from "@/helpers/variebles";
-
-import { FaViber } from "react-icons/fa";
-import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
-import { MdOutlineFreeBreakfast, MdOutlineDinnerDining } from "react-icons/md";
-import { LuBeef } from "react-icons/lu";
-
+//component
 import CategorySlider from "@/components/CategorySlider";
 import NewMenuItems from "@/components/NewMenuItems";
 import MapBox from "@/components/MapBox";
 import CommentSlider from "@/components/CommentSlider";
-
+//img
 import MainBgImg from "@/assets/img/home/main-bg.jpg";
 import MainImg from "@/assets/img/home/main.png";
 import About1Img from "@/assets/img/home/about-1.jpg";
@@ -25,18 +20,22 @@ import Stock2Img from "@/assets/img/home/stock-2.png";
 import Stock3Img from "@/assets/img/home/stock-3.png";
 import Stock4Img from "@/assets/img/home/stock-4.png";
 import CommentFlowerImg from "@/assets/img/home/comment-flower.png";
+import { FaViber } from "react-icons/fa";
+import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
+import { MdOutlineFreeBreakfast, MdOutlineDinnerDining } from "react-icons/md";
+import { LuBeef } from "react-icons/lu";
 
 export const metadata = {
-  title: "Valhalla cafe - Головна",
+  title: "Кафе Bunker - Фастів | Головна",
   description:
-    "В кафе «Valhalla» на вас чекає вишукана Європейська кухня, привітний персонал і приємна атмосфера. Швидка доставка та смачні, комплексні обіди по місту. Проведення банкетів, VIP-кімната та якісне обслуговування.",
+    "Кафе Bunker місто Фастів, Кафе Bunker з дружньою атмосферою розташоване недалеко від центра міста. Ми завжди радіємо нашим гостям. Тут Ви можете скуштувати різноманітну кухню від українського борщика до американського бургера. Це місце в якому можна гарно відпочити, зустрітися з друзями, та відволіктися від буденних справ. Ти точно захочеш сюди повернутися.",
 };
 
 export default function Home() {
   return (
-    <>
-      <main
-        className="flex flex-col justify-center min-h-[100dvh] h-full bg-no-repeat bg-cover bg-center"
+    <main>
+      <section
+        className="flex flex-col justify-center min-h-[100dvh] h-full bg-no-repeat bg-cover bg-center bg-blend-multiply bg-black/90"
         style={{ backgroundImage: `url(${MainBgImg.src})` }}
       >
         <div className="container">
@@ -57,14 +56,13 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col max-w-[470px] md:max-w-full">
-                <h3 className="subtitle-section">Welcome to Valhalla Cafe!</h3>
+                <h3 className="subtitle-section">Welcome to Bunker Cafe!</h3>
                 <h1 className="text-white text-[60px] leading-[68px] font-bold mb-8 sm:text-4xl sm:mb-5">
-                  <span className="text-primary">См</span>акуйте найкраще разом
-                  з нами
+                  <span className="text-primary">Ласкаво</span> просимо до Кафе
+                  Bunker
                 </h1>
                 <p className="text-white font-inter mb-8">
-                  Ексклюзивність смаку м'ясних шедеврів в кожній страві. Ласкаво
-                  просимо в наш ресторан!
+                  Кращий BUNKER твого міста!
                 </p>
                 <Link href="/menu" className="btn-primary w-[190px] sm:w-full">
                   Перейти до меню
@@ -75,11 +73,11 @@ export default function Home() {
             <Image
               className="w-[600px] lg:w-[400px] md:absolute md:-bottom-[180px] md:-right-[90px] md:w-[350px] sm:hidden"
               src={MainImg}
-              alt="Picture of the author"
+              alt="Ласкаво просимо до Кафе Bunker"
             />
           </div>
         </div>
-      </main>
+      </section>
 
       <section className="pt-[120px] pb-[70px] sm:py-[50px]">
         <div className="container">
@@ -90,10 +88,11 @@ export default function Home() {
                 <span className="text-primary">Ко</span>ротко про наше кафе
               </h2>
               <p className="paragraph-section mb-6">
-                В кафе «Valhalla» на вас чекає вишукана Європейська кухня,
-                привітний персонал і приємна атмосфера. Швидка доставка та
-                смачні, комплексні обіди по місту. Проведення банкетів,
-                VIP-кімната та якісне обслуговування.
+                Кафе Bunker з дружньою атмосферою розташоване недалеко від
+                центра міста. Ми завжди радіємо нашим гостям і готові смачно їх
+                нагодувати! Це місце в якому можна гарно відпочити, зустрітися з
+                друзями, та відволіктися від буденних справ. Ти точно захочеш
+                сюди повернутися.
               </p>
               <ul className="flex flex-col gap-6 mb-8 ml-[10px]">
                 <li className="list-['\2713'] pl-[10px]">Швидка доставка</li>
@@ -114,19 +113,19 @@ export default function Home() {
 
             <div className="grid grid-cols-2 grid-rows-[auto,minmax(0,auto)] gap-4 w-1/2 sm:w-full">
               <Image
-                className="col-span-2 rounded-md h-[330px] object-cover object-center sm:h-auto"
+                className="col-span-2 rounded-md h-[330px] object-cover object-bottom sm:h-auto"
                 src={About1Img}
                 alt=""
                 placeholder="blur"
               />
               <Image
-                className="row-start-2 rounded-md h-[195px] object-cover object-center sm:h-full"
+                className="row-start-2 rounded-md h-[195px] object-cover object-bottom sm:h-full"
                 src={About2Img}
                 alt=""
                 placeholder="blur"
               />
               <Image
-                className="row-start-2 rounded-md h-[195px] object-cover object-center sm:h-full"
+                className="row-start-2 rounded-md h-[195px] object-cover object-bottom sm:h-full"
                 src={About3Img}
                 alt=""
                 placeholder="blur"
@@ -181,19 +180,19 @@ export default function Home() {
               </p>
               <div className="flex gap-8 mb-8 sm:gap-5">
                 <div className="flex flex-col items-center sm:w-1/3">
-                  <div className="flex items-center justify-center rounded-md bg-primary w-[100px] h-[100px] duration-300 mb-2 hover:bg-[#BF9E4D] hover:scale-105 sm:w-full sm:h-[90px]">
+                  <div className="flex items-center justify-center rounded-md bg-primary w-[100px] h-[100px] duration-300 mb-2 hover:bg-[#be5737] hover:scale-105 sm:w-full sm:h-[90px]">
                     <MdOutlineFreeBreakfast className="text-[56px]" />
                   </div>
                   <span className="font-inter text-lg">Сніданок </span>
                 </div>
                 <div className="flex flex-col items-center sm:w-1/3">
-                  <div className="flex items-center justify-center rounded-md bg-primary w-[100px] h-[100px] duration-300 mb-2 hover:bg-[#BF9E4D] hover:scale-105 sm:w-full sm:h-[90px]">
+                  <div className="flex items-center justify-center rounded-md bg-primary w-[100px] h-[100px] duration-300 mb-2 hover:bg-[#be5737] hover:scale-105 sm:w-full sm:h-[90px]">
                     <MdOutlineDinnerDining className="text-[56px]" />
                   </div>
                   <span className="font-inter text-lg">Обід</span>
                 </div>
                 <div className="flex flex-col items-center sm:w-1/3">
-                  <div className="flex items-center justify-center rounded-md bg-primary w-[100px] h-[100px] duration-300 mb-2 hover:bg-[#BF9E4D] hover:scale-105 sm:w-full sm:h-[90px]">
+                  <div className="flex items-center justify-center rounded-md bg-primary w-[100px] h-[100px] duration-300 mb-2 hover:bg-[#be5737] hover:scale-105 sm:w-full sm:h-[90px]">
                     <LuBeef className="text-[56px]" />
                   </div>
                   <span className="font-inter text-lg">Вечеря</span>
@@ -336,7 +335,7 @@ export default function Home() {
                 ))}
                 <h6 className="text-xl sm:text-base">
                   Графік роботи:
-                  <span className="text-primary ml-2">Пн-Нд: 9:00 — 23:00</span>
+                  <span className="text-primary ml-2">Пн-Нд: 9:00 — 22:00</span>
                 </h6>
               </div>
             </div>
@@ -347,6 +346,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

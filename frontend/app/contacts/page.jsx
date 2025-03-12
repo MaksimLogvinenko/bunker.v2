@@ -1,15 +1,15 @@
 import React from "react";
 import { contacts } from "@/helpers/variebles";
-
+//components
 import MapBox from "@/components/MapBox";
 import ContactForm from "@/components/ContactForm";
-
+//img
 import MainBgImg from "@/assets/img/contacts/main-bg.jpg";
 
 export const metadata = {
-  title: "Valhalla cafe - Контакти",
+  title: "Кафе Bunker - Фастів | Контакти",
   description:
-    "В кафе «Valhalla» на вас чекає вишукана Європейська кухня, привітний персонал і приємна атмосфера. Швидка доставка та смачні, комплексні обіди по місту. Проведення банкетів, VIP-кімната та якісне обслуговування.",
+    "Кафе Bunker місто Фастів, Кафе Bunker з дружньою атмосферою розташоване недалеко від центра міста. Ми завжди радіємо нашим гостям. Тут Ви можете скуштувати різноманітну кухню від українського борщика до американського бургера. Це місце в якому можна гарно відпочити, зустрітися з друзями, та відволіктися від буденних справ. Ти точно захочеш сюди повернутися.",
 };
 
 const Contacts = () => {
@@ -54,7 +54,7 @@ const Contacts = () => {
                 ))}
                 <h6 className="text-xl sm:text-base">
                   Графік роботи:
-                  <span className="text-primary ml-2">Пн-Нд: 9:00 — 23:00</span>
+                  <span className="text-primary ml-2">Пн-Нд: 9:00 — 22:00</span>
                 </h6>
               </div>
             </div>

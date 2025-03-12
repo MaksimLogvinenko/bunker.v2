@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+//img
 import { FaBars } from "react-icons/fa";
 
 const Header = ({ menuList, setShowMenu }) => {
@@ -12,7 +13,7 @@ const Header = ({ menuList, setShowMenu }) => {
       <div className="container">
         <div className="flex flex-col">
           <h5 className="text-primary text-2xl text-center font-bold mb-4">
-            Valhalla <span className="text-white">cafe</span>
+            Bunker <span className="text-white">cafe</span>
           </h5>
           <div className="flex justify-between items-center gap-5">
             <ul className="flex items-center gap-8 md:hidden">
@@ -42,7 +43,7 @@ const Header = ({ menuList, setShowMenu }) => {
               className="text-lg duration-300 text-white hover:text-primary sm:text-base"
               href="tel:380930051243"
             >
-              +38 093 005 12 43
+              +38 093 381 7902
             </a>
             <button
               onClick={(e) => {
