@@ -1,0 +1,4 @@
+env/
+.env
+menu.db
+__pycache__/

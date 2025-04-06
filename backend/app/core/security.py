@@ -1,7 +1,7 @@
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, Header, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from typing import Annotated
@@ -26,7 +26,7 @@ def get_password_hash(password: str):
 
 def create_access_token(
     data: dict,
-    settings: Annotated[Settings, Depends(get_settings)]
+    settings: Settings,
 ):
     to_encode = data.copy()
     expire = datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -72,3 +72,18 @@ def get_current_admin(current_user: User = Depends(get_current_user)):
             detail="Permission denied"
         )
     return current_user
+
+def verify_admin_token(
+    settings: Annotated[Settings, Depends(get_settings)],
+    x_admin_token: str = Header(..., alias="X-Admin-Token"),
+):
+    if not x_admin_token:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="X-Admin-Token header is missing"
+        )
+    if x_admin_token != settings.ADMIN_TOKEN:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Invalid admin token"
+        )

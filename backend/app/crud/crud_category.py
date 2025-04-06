@@ -1,93 +1,88 @@
-from sqlalchemy.orm import Session
-from app.models.category import Category, CategoryTranslation
+from fastapi import HTTPException, status
+from typing import List, Optional
+from sqlalchemy.orm import Session, joinedload, lazyload
+from app.models.category import Category
+from app.schemas.category import CategoryCreate, CategoryUpdate
+from app.schemas.category import CategoryOut
 
-def create_category(db: Session, translations: list, image_url: str = None) -> Category:
-    db_category = Category(image_url=image_url)
-    db.add(db_category)
+def create_category(db: Session, category: CategoryCreate) -> Category:
+    new_category = Category(**category.model_dump())
+    db.add(new_category)
     db.commit()
-    db.refresh(db_category)
+    db.refresh(new_category)
+    return new_category
+
+def get_category_by_id(
+        db: Session,
+        category_id: int,
+    ) -> Category:
+    category = db.query(Category).filter(Category.id == category_id).first()
     
-    for trans in translations:
-        db_trans = CategoryTranslation(
-            category_id=db_category.id,
-            **trans.dict(),
-        )
-        db.add(db_trans)
-    db.commit()
-    return db_category
-
-def get_category(db: Session, category_id: int, language: str) -> dict:
-    category = db.query(Category).get(category_id)
     if not category:
-        return None
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Category not found")
     
-    translation = next(
-        (t for t in category.translations if t.language_code == language),
-        next(t for t in category.translations if t.language_code == 'uk')
-    )
+    return category
+
+def get_category_with_items_by_id(
+        db: Session,
+        category_id: int,
+    ) -> Category:
+    query = db.query(Category).filter(Category.id == category_id)
+    query = query.options(joinedload(Category.menu_items))
+    category = query.first()
+
+    if not category:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Category not found")
     
-    return {
-        "id": category.id,
-        "image_url": category.image_url,
-        "name": translation.name,
-        "description": translation.description
-    }
+    return category
 
 def get_categories(
     db: Session,
-    language: str,
     skip: int = 0,
-    limit: int = 100
-) -> list:
-    categories = db.query(Category).offset(skip).limit(limit).all()
-    result = []
-    
-    for category in categories:
-        translation = next(
-            (t for t in category.translations if t.language_code == language),
-            next(t for t in category.translations if t.language_code == 'uk')
-        )
-        result.append({
-            "id": category.id,
-            "image_url": category.image_url,
-            "name": translation.name,
-            "description": translation.description
-        })
-    
-    return result
+    limit: int = 100,
+) -> List[Category]:
+    return (
+        db.query(Category)
+        .order_by(Category.name)
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
+
+def get_categories_with_items(
+    db: Session,
+    skip: int = 0,
+    limit: int = 100,
+) -> List[Category]:
+    query = (
+        db.query(Category)
+        .order_by(Category.name)
+        .offset(skip)
+        .limit(limit)
+    )
+    query = query.options(joinedload(Category.menu_items))
+    return query.all()
+
 
 def update_category(
     db: Session,
     category_id: int,
-    translations: list,
-    image_url: str = None
+    category_update: CategoryUpdate
+    ,
 ) -> Category:
-    category = db.query(Category).get(category_id)
+    category = get_category_by_id(db, category_id)
+    update_data = category_update.model_dump(exclude_unset=True)
     if not category:
         return None
     
-    if image_url:
-        category.image_url = image_url
-    
-    # Оновлюємо переклади
-    db.query(CategoryTranslation).filter(
-        CategoryTranslation.category_id == category_id
-    ).delete()
-    
-    for trans in translations:
-        db_trans = CategoryTranslation(
-            category_id=category.id,
-            **trans.dict()
-        )
-        db.add(db_trans)
-    
+    for key, value in update_data.items():
+        setattr(category, key, value)
+
     db.commit()
+    db.refresh(category)
     return category
 
-def delete_category(db: Session, category_id: int) -> bool:
-    category = db.query(Category).get(category_id)
-    if category:
-        db.delete(category)
-        db.commit()
-        return True
-    return False
+def delete_category(db: Session, category_id: int) -> None:
+    category = get_category_by_id(db, category_id)
+    db.delete(category)
+    db.commit()

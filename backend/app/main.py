@@ -1,13 +1,15 @@
 # app/main.py
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text 
 from sqlalchemy.orm import Session
+
 from app.core.config import settings
 from app.db.database import get_db
-from app.api import deps, routes
+from app.api import routes
 
 def create_application() -> FastAPI:
-    # Створюємо екземпляр FastAPI з налаштуваннями
+    # Create a FastAPI instance with settings
     app = FastAPI(
         title=settings.PROJECT_NAME,
         version=settings.VERSION,
@@ -16,7 +18,7 @@ def create_application() -> FastAPI:
         redoc_url="/redoc"
     )
 
-    # Налаштування CORS
+    # CORS settings
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.BACKEND_CORS_ORIGINS,
@@ -25,7 +27,7 @@ def create_application() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # Підключаємо роутери
+    # Connecting routers
     app.include_router(routes.api_router, prefix=settings.API_PREFIX)
 
     # Health check endpoint
@@ -33,11 +35,11 @@ def create_application() -> FastAPI:
     async def health_check():
         return {"status": "ok"}
 
-    # Перевірка підключення до БД
+    # Checking the connection to the database
     @app.get("/check-db", tags=["System"])
     async def check_db_connection(db: Session = Depends(get_db)):
         try:
-            db.execute("SELECT 1")
+            db.execute(text("SELECT 1"))
             return {"database": "connected"}
         except Exception as e:
             return {"database": "error", "detail": str(e)}

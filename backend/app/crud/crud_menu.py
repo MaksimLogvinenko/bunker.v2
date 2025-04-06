@@ -1,141 +1,76 @@
-from datetime import datetime
+from fastapi import HTTPException, status
+from typing import Optional, List
 from sqlalchemy.orm import Session
-from app.models.menu_item import MenuItem, MenuItemTranslation, Discount
-from app.schemas.menu import MenuItemCreate, DiscountCreate
+from app.models.menu_item import MenuItem, Discount
+from app.schemas.menu import MenuItemCreate, DiscountCreate, MenuItemOut, MenuItemUpdate
 
 def create_menu_item(
     db: Session,
     item_data: MenuItemCreate,
-    image_url: str = None
 ) -> MenuItem:
-    db_item = MenuItem(
-        category_id=item_data.category_id,
-        price=item_data.price,
-        image_url=image_url,
-        is_available=item_data.is_available
-    )
-    db.add(db_item)
+    item = MenuItem(**item_data.model_dump())
+    db.add(item)
     db.commit()
-    db.refresh(db_item)
-    
-    for trans in item_data.translations:
-        db_trans = MenuItemTranslation(
-            menu_item_id=db_item.id,
-            **trans.dict()
-        )
-        db.add(db_trans)
-    
-    db.commit()
-    return db_item
+    db.refresh(item)
+    return item
 
-def get_menu_item(
+def get_menu_item_by_id(
     db: Session,
     item_id: int,
-    language: str
-) -> dict:
-    item = db.query(MenuItem).get(item_id)
+) -> MenuItem:
+    item = db.query(MenuItem).filter(MenuItem.id == item_id).first()
     if not item:
-        return None
-    
-    translation = next(
-        (t for t in item.translations if t.language_code == language),
-        next(t for t in item.translations if t.language_code == 'uk')
-    )
-    
-    active_discount = next(
-        (d for d in item.discounts if d.is_active and 
-         d.start_date <= datetime.now() <= d.end_date),
-        None
-    )
-    
-    return {
-        "id": item.id,
-        "name": translation.name,
-        "description": translation.description,
-        "ingredients": translation.ingredients,
-        "price": float(item.price),
-        "discounted_price": calculate_discount(item.price, active_discount),
-        "image_url": item.image_url,
-        "category_id": item.category_id,
-        "is_available": item.is_available
-    }
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Category not found")
+    return item
 
 def get_menu_items(
     db: Session,
-    language: str,
-    category_id: int = None,
+    category_id: Optional[int] = None,
+    is_available: Optional[bool] = None,
+    is_new: Optional[bool] = None,
     skip: int = 0,
     limit: int = 100
-) -> list:
-    query = db.query(MenuItem)
-    if category_id:
-        query = query.filter(MenuItem.category_id == category_id)
-    
-    items = query.offset(skip).limit(limit).all()
-    result = []
-    
-    for item in items:
-        translation = next(
-            (t for t in item.translations if t.language_code == language),
-            next(t for t in item.translations if t.language_code == 'uk')
-        )
+) -> List[MenuItemOut]:
+    query = (
+        db.query(MenuItem)
+        .order_by(MenuItem.category_id)
+        .offset(skip)
+        .limit(limit)
+    )
+    if query.count() != 0:
+        if category_id is not None:
+            query = query.filter(MenuItem.category_id == category_id)
+        if is_available is not None:
+            query = query.filter(MenuItem.is_available == is_available)
+        if is_new is not None:
+            query = query.filter(MenuItem.is_new == is_new)
+
+    return query.all()
         
-        active_discount = next(
-            (d for d in item.discounts if d.is_active and 
-             d.start_date <= datetime.now() <= d.end_date),
-            None
-        )
-        
-        result.append({
-            "id": item.id,
-            "name": translation.name,
-            "price": float(item.price),
-            "discounted_price": calculate_discount(item.price, active_discount),
-            "image_url": item.image_url,
-            "category_id": item.category_id
-        })
-    
-    return result
 
 def update_menu_item(
     db: Session,
     item_id: int,
-    item_data: MenuItemCreate,
-    image_url: str = None
+    item_data: MenuItemUpdate,
 ) -> MenuItem:
+    item = get_menu_item_by_id(db, item_id)
+
+    for key, value in item_data.model_dump(exclude_unset=True).items():
+        setattr(item, key, value)
+
     item = db.query(MenuItem).get(item_id)
     if not item:
         return None
-    
-    item.category_id = item_data.category_id
-    item.price = item_data.price
-    item.is_available = item_data.is_available
-    
-    if image_url:
-        item.image_url = image_url
-    
-    # Оновлюємо переклади
-    db.query(MenuItemTranslation).filter(
-        MenuItemTranslation.menu_item_id == item_id
-    ).delete()
-    
-    for trans in item_data.translations:
-        db_trans = MenuItemTranslation(
-            menu_item_id=item.id,
-            **trans.dict()
-        )
-        db.add(db_trans)
-    
+
     db.commit()
+    db.refresh(item)
+
     return item
 
-def delete_menu_item(db: Session, item_id: int) -> bool:
-    item = db.query(MenuItem).get(item_id)
-    if item:
-        db.delete(item)
-        db.commit()
-        return True
-    return False
+def delete_menu_item(db: Session, item_id: int) -> None:
+    item = get_menu_item_by_id(db, item_id)
+    db.delete(item)
+    db.commit()
 
 def add_discount(
     db: Session,
