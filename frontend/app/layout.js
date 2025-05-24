@@ -2,6 +2,7 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
 import { menuList } from "@/helpers/variebles";
+import { Providers } from "./providers";
 //components
 import Header from "@/components/Header";
 import HeaderMobile from "@/components/HeaderMobile";
@@ -17,15 +18,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="uk">
       <body className="relative">
-        <ToastContainer theme="dark" />
-        <Header menuList={menuList} setShowMenu={setShowMenu} />
-        <HeaderMobile
-          menuList={menuList}
-          showMenu={showMenu}
-          setShowMenu={setShowMenu}
-        />
-        {children}
-        <Footer />
+        <Providers>
+          <ToastContainer theme="dark" />
+          <Header menuList={menuList} setShowMenu={setShowMenu} />
+          <HeaderMobile
+            menuList={menuList}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
