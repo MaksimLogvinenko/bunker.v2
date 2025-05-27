@@ -25,36 +25,37 @@ export default function LoginPage() {
 
   return (
     <>
-      <main className="flex flex-col justify-center min-h-[400px] h-full bg-no-repeat bg-cover bg-center pt-[120px] pb-10 bg-blend-multiply bg-dark/90">
+      <main className="flex flex-col justify-center min-h-[600px] h-full bg-no-repeat bg-cover bg-center pt-[120px] pb-10 bg-blend-multiply bg-dark/90">
         <div className="container">
           <div className="relative flex justify-center items-center md:flex-col md:items-start">
             <div className="flex flex-col text-center">
-              <h3 className="subtitle-section">Login</h3>
+              <h3 className="subtitle-section mb-5">Login</h3>
+
+              <form className="max-w-[400px]">
+                <input
+                  type="text"
+                  className="w-full border p-2 mb-2 text-black outline-none"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <input
+                  type="password"
+                  className="w-full border p-2 mb-4 text-black outline-none"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  className="btn btn-primary"
+                  onClick={handleLogin}
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Loading..." : "Login"}
+                </button>
+              </form>
             </div>
           </div>
-        </div>
-        <div className="max-w-md mx-auto mt-10">
-          <h1 className="text-xl mb-4">Login</h1>
-          <input
-            className="w-full border p-2 mb-2"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            className="w-full border p-2 mb-4"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button
-            className="bg-blue-600 text-white px-4 py-2"
-            onClick={handleLogin}
-            disabled={isLoading}
-          >
-            {isLoading ? "Loading..." : "Login"}
-          </button>
         </div>
       </main>
     </>
