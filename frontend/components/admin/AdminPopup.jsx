@@ -7,6 +7,7 @@ const AdminPopup = ({
   setShowPopup,
   createEditForm,
   handleChange,
+  handleChangeFile,
   cetegoriesItems,
   loadingCategories,
   setCreateEditForm,
@@ -122,18 +123,17 @@ const AdminPopup = ({
               ))}
           </select>
         </div>
-        {/* <div className="flex flex-col text-sm">
+        <div className="flex flex-col text-sm">
           <label htmlFor="image_url">Картинка</label>
           <input
             type="file"
             id="image_url"
             name="image_url"
             className="bg-transparent p-1 border border-gray outline-none rounded-lg"
-            autoComplete="off"
-            value={createEditForm.image_url}
-            onChange={handleChange}
+            accept="image/*"
+            onChange={handleChangeFile}
           />
-        </div> */}
+        </div>
         <div className="flex items-center gap-5 text-sm">
           <label htmlFor="is_new">Новинка</label>
           <input

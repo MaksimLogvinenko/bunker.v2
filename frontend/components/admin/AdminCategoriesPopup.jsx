@@ -3,11 +3,13 @@ import React from "react";
 import { MdClose } from "react-icons/md";
 
 const AdminCategoriesPopup = ({
+  isMode,
   createCategorieForm,
   showCategoriePopup,
   setShowCategoriePopup,
   handleChangeCategorie,
   handleCreateCategorieItem,
+  handleEditCategorieItem,
 }) => {
   return (
     <div
@@ -39,7 +41,11 @@ const AdminCategoriesPopup = ({
         <button
           type="button"
           className="btn btn-primary"
-          onClick={handleCreateCategorieItem}
+          onClick={() =>
+            isMode === "add"
+              ? handleCreateCategorieItem()
+              : handleEditCategorieItem(createCategorieForm.id)
+          }
         >
           Зберегти
         </button>

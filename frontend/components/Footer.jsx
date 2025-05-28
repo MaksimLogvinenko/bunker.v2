@@ -89,8 +89,11 @@ const Footer = () => {
       <div className="bg-gray py-5">
         <div className="container">
           <p className="font-inter text-sm sm:text-xs sm:text-center">
-            © {currYear} Кафе "Bunker". Розроблено WebDoze Studio. Всі права
-            захищено.
+            © {currYear} Кафе "Bunker". Розроблено{" "}
+            <a className="underline" href="mailto:maksimlogvinenko98@gmail.com">
+              WebDoze Studio
+            </a>
+            . Всі права захищено.
           </p>
         </div>
       </div>

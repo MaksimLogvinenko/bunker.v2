@@ -23,9 +23,9 @@ const AdminCardList = ({
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-      {isLoading && <p className="text-center mb-5">Загрузка...</p>}
+      {isLoading && <p className="text-center mb-5">Завантаження...</p>}
       {isError && (
-        <p className="text-red-500 text-center mb-5">Ошибка: {error?.status}</p>
+        <p className="text-red-500 text-center mb-5">Помилка: {error?.status}</p>
       )}
 
       {menuItems.length > 0 ? (

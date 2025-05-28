@@ -175,12 +175,12 @@ export default function Home() {
                   <span className="text-primary">За</span>мовте собі бізнес-ланч
                 </h2>
                 <p className="paragraph-section mb-8">
-                  У нашому кафе "Valhalla" ви маєте чудову можливість
+                  У нашому кафе "Bunker" ви маєте чудову можливість
                   насолодитися смачним та ситним бізнес-ланчем. Ми пропонуємо
                   різноманітні страви, щоб задовольнити ваші гастрономічні
                   уподобання. Наші бізнес-ланчі включають в себе вишукані
                   страви, виготовлені з найсвіжіших продуктів. Приходьте, або
-                  замовляйте та насолоджуйтеся обідом у "Valhalla" — смачно,
+                  замовляйте та насолоджуйтеся обідом у "Bunker" — смачно,
                   вишукано, затишно.
                 </p>
                 <div className="flex gap-8 mb-8 sm:gap-5">
@@ -230,7 +230,7 @@ export default function Home() {
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
                     src={Stock1Img}
-                    alt="Valhalla cafe - Швидка доставка"
+                    alt="Bunker cafe - Швидка доставка"
                     placeholder="blur"
                   />
                   <h4 className="text-xl font-bold mb-6 text-center lg:text-xl md:mb-5 sm:mb-2">
@@ -244,7 +244,7 @@ export default function Home() {
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
                     src={Stock2Img}
-                    alt="Valhalla cafe - Найсмачніші комплексні обіди по місту в будь який день"
+                    alt="Bunker cafe - Найсмачніші комплексні обіди по місту в будь який день"
                     placeholder="blur"
                   />
                   <h4 className="text-xl font-bold mb-6 text-center lg:text-xl md:mb-5 sm:mb-2">
@@ -258,7 +258,7 @@ export default function Home() {
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
                     src={Stock3Img}
-                    alt="Valhalla cafe - Великі гриль сети для компанії"
+                    alt="Bunker cafe - Великі гриль сети для компанії"
                     placeholder="blur"
                   />
                   <h4 className="text-xl font-bold mb-6 text-center lg:text-xl md:mb-5 sm:mb-2">
@@ -272,7 +272,7 @@ export default function Home() {
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
                     src={Stock4Img}
-                    alt="Valhalla cafe - Вишукана європейська кухня"
+                    alt="Bunker cafe - Вишукана європейська кухня"
                     placeholder="blur"
                   />
                   <h4 className="text-xl font-bold mb-6 text-center lg:text-xl md:mb-5 sm:mb-2">
@@ -305,7 +305,7 @@ export default function Home() {
           <img
             className="absolute left-0 top-0"
             src={CommentFlowerImg.src}
-            alt="Відгуки Valhalla cafe"
+            alt="Відгуки Bunker cafe"
           />
           <div className="container">
             <div className="flex flex-col">

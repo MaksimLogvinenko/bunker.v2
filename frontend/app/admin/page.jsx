@@ -9,6 +9,7 @@ import {
   useCreateCategorieItemMutation,
   useCreateMenuItemMutation,
   useDeleteCategorieItemMutation,
+  useEditCategorieItemMutation,
   useGetCategoriesQuery,
   useGetMenuQuery,
 } from "@/store/api";
@@ -28,31 +29,40 @@ export default function AdminPage() {
   const token = useSelector((state) => state.auth.token);
   const router = useRouter();
   const dispatch = useDispatch();
+  const [isMode, setIsMode] = React.useState("edit");
   const [searchText, setSearchText] = React.useState("");
   const [debouncedSearch, setDebouncedSearch] = React.useState("");
   const [showCategoriePopup, setShowCategoriePopup] = React.useState(false);
   const [showPopup, setShowPopup] = React.useState(false);
-  const [createCategorieForm, setCreateCategorieForm] = React.useState({
+
+  const initialCategoriesForm = {
     name: "",
     description: "",
     image_url: "",
-  });
-  const [createEditForm, setCreateEditForm] = React.useState({
+  };
+
+  const initialMenuForm = {
     name: "",
     category_id: 0,
     description: "",
     price: 0,
-    image_url: "https://example.com/",
+    image_url: null,
     is_available: true,
     is_new: false,
     ingredients: "",
     portion_size: "",
-  });
+  };
+
+  const [createCategorieForm, setCreateCategorieForm] = React.useState(
+    initialCategoriesForm
+  );
+  const [createEditForm, setCreateEditForm] = React.useState(initialMenuForm);
   const { data: menuItems, isLoading, isError, error } = useGetMenuQuery();
   const { data: cetegoriesItems, isLoading: loadingCategories } =
     useGetCategoriesQuery();
   const [createMenuItem] = useCreateMenuItemMutation();
   const [createCategorieItem] = useCreateCategorieItemMutation();
+  const [editCategorieItem] = useEditCategorieItemMutation();
   const [deleteCategorieItem] = useDeleteCategorieItemMutation();
 
   React.useEffect(() => {
@@ -100,6 +110,48 @@ export default function AdminPage() {
     }));
   };
 
+  const handleChangeFile = async (e) => {
+    const { name, value, files } = e.target;
+
+    if (name === "image_url" && files && files[0]) {
+      const formData = new FormData();
+      formData.append("file", files[0]);
+      formData.append("upload_preset", "bunker");
+      formData.append("folder", "menu");
+
+      try {
+        const res = await fetch(
+          "https://api.cloudinary.com/v1_1/dhozoa8m9/image/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        const data = await res.json();
+
+        if (data.secure_url) {
+          setCreateEditForm((prev) => ({
+            ...prev,
+            image_url: data.secure_url,
+          }));
+        } else {
+          throw new Error("Cloudinary upload failed");
+        }
+      } catch (error) {
+        console.error("Ошибка при загрузке изображения:", error);
+        alert("Ошибка при загрузке изображения.");
+      }
+
+      return;
+    }
+
+    setCreateEditForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleCreateMenuItem = async () => {
     try {
       await createMenuItem(createEditForm).unwrap();
@@ -113,7 +165,7 @@ export default function AdminPage() {
 
   const handleCreateCategorieItem = async () => {
     try {
-      if (createCategorieItem.name !== "") {
+      if (createCategorieForm.name !== "") {
         await createCategorieItem(createCategorieForm).unwrap();
         toast.success("Категорія успішно додана!");
         setShowCategoriePopup(false);
@@ -121,6 +173,24 @@ export default function AdminPage() {
     } catch (err) {
       toast.error("Помилка при додаванні");
       console.error("Помилка створення категорії:", err);
+    }
+  };
+
+  const handleEditCategorieItem = async (id) => {
+    const { id: _, ...formWithoutId } = createCategorieForm;
+
+    try {
+      if (createCategorieForm.name !== "") {
+        await editCategorieItem({
+          id,
+          updatedCategorieItem: formWithoutId,
+        }).unwrap();
+        toast.success("Категорію змінено!");
+        setShowCategoriePopup(false);
+      }
+    } catch (err) {
+      toast.error("Помилка при редагуванні");
+      console.error("Помилка редагування категорії:", err);
     }
   };
 
@@ -137,22 +207,25 @@ export default function AdminPage() {
   return (
     <>
       <main className="flex flex-col justify-center h-full bg-no-repeat bg-cover bg-center pt-[160px] pb-10 bg-blend-multiply bg-dark/90">
-        <AdminPopup
-          showPopup={showPopup}
-          setShowPopup={setShowPopup}
-          createEditForm={createEditForm}
-          handleChange={handleChange}
-          cetegoriesItems={cetegoriesItems}
-          loadingCategories={loadingCategories}
-          setCreateEditForm={setCreateEditForm}
-          handleCreateMenuItem={handleCreateMenuItem}
-        />
         <AdminCategoriesPopup
+          isMode={isMode}
           createCategorieForm={createCategorieForm}
           showCategoriePopup={showCategoriePopup}
           setShowCategoriePopup={setShowCategoriePopup}
           handleChangeCategorie={handleChangeCategorie}
           handleCreateCategorieItem={handleCreateCategorieItem}
+          handleEditCategorieItem={handleEditCategorieItem}
+        />
+        <AdminPopup
+          showPopup={showPopup}
+          setShowPopup={setShowPopup}
+          createEditForm={createEditForm}
+          handleChange={handleChange}
+          handleChangeFile={handleChangeFile}
+          cetegoriesItems={cetegoriesItems}
+          loadingCategories={loadingCategories}
+          setCreateEditForm={setCreateEditForm}
+          handleCreateMenuItem={handleCreateMenuItem}
         />
         <div className="container">
           <div className="flex flex-col">
@@ -161,14 +234,21 @@ export default function AdminPage() {
                 <button
                   type="button"
                   className="p-5 bg-gray rounded-xl duration-300 active:scale-95"
-                  onClick={() => setShowPopup(true)}
+                  onClick={() => {
+                    setCreateEditForm(initialMenuForm);
+                    setShowPopup(true);
+                  }}
                 >
                   <FaPlus />
                 </button>
                 <button
                   type="button"
                   className="p-5 bg-gray rounded-xl duration-300 active:scale-95"
-                  onClick={() => setShowCategoriePopup(true)}
+                  onClick={() => {
+                    setIsMode("add");
+                    setCreateCategorieForm(initialCategoriesForm);
+                    setShowCategoriePopup(true);
+                  }}
                 >
                   <BiSolidCategory />
                 </button>
@@ -182,9 +262,12 @@ export default function AdminPage() {
               </button>
             </div>
             <AdminCategoriesList
+              setIsMode={setIsMode}
               cetegoriesItems={cetegoriesItems}
               loadingCategories={loadingCategories}
               handleDeleteCategorieItem={handleDeleteCategorieItem}
+              setCreateCategorieForm={setCreateCategorieForm}
+              setShowCategoriePopup={setShowCategoriePopup}
             />
             <AdminCardList
               menuItems={filteredItems}

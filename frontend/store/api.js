@@ -49,11 +49,23 @@ export const api = createApi({
       query: () => "v1/categories/",
       providesTags: ["Categories"],
     }),
+    getCategorieById: builder.query({
+      query: (id) => `v1/categories/${id}`,
+      providesTags: (result, error, id) => [{ type: "Categories", id }],
+    }),
     createCategorieItem: builder.mutation({
       query: (newCategorieItem) => ({
         url: "v1/categories/",
         method: "POST",
         body: newCategorieItem,
+      }),
+      invalidatesTags: ["Categories"],
+    }),
+    editCategorieItem: builder.mutation({
+      query: ({ id, updatedCategorieItem }) => ({
+        url: `v1/categories/${id}/`,
+        method: "PUT",
+        body: updatedCategorieItem,
       }),
       invalidatesTags: ["Categories"],
     }),
@@ -73,6 +85,8 @@ export const {
   useLazyGetMenuByIdQuery,
   useCreateMenuItemMutation,
   useGetCategoriesQuery,
+  useLazyGetCategorieByIdQuery,
   useCreateCategorieItemMutation,
+  useEditCategorieItemMutation,
   useDeleteCategorieItemMutation,
 } = api;
