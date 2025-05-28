@@ -3,6 +3,7 @@ import React from "react";
 import { MdClose } from "react-icons/md";
 
 const AdminPopup = ({
+  isMode,
   showPopup,
   setShowPopup,
   createEditForm,
@@ -12,6 +13,7 @@ const AdminPopup = ({
   loadingCategories,
   setCreateEditForm,
   handleCreateMenuItem,
+  handleEditMenuItem,
 }) => {
   return (
     <div
@@ -154,7 +156,11 @@ const AdminPopup = ({
         </div>
         <button
           type="button"
-          onClick={handleCreateMenuItem}
+          onClick={() =>
+            isMode === "add"
+              ? handleCreateMenuItem()
+              : handleEditMenuItem(createEditForm.id)
+          }
           className="btn btn-primary"
         >
           Зберегти

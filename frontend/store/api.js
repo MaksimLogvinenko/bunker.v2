@@ -45,6 +45,22 @@ export const api = createApi({
       }),
       invalidatesTags: ["Menu"],
     }),
+    editMenuItem: builder.mutation({
+      query: ({ id, updatedMenuItem }) => ({
+        url: `v1/menu-items/${id}`,
+        method: "PUT",
+        body: updatedMenuItem,
+      }),
+      invalidatesTags: ["Menu"],
+    }),
+    deleteMenuItem: builder.mutation({
+      query: (id) => ({
+        url: `v1/menu-items/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Menu"],
+    }),
+    //categories
     getCategories: builder.query({
       query: () => "v1/categories/",
       providesTags: ["Categories"],
@@ -63,7 +79,7 @@ export const api = createApi({
     }),
     editCategorieItem: builder.mutation({
       query: ({ id, updatedCategorieItem }) => ({
-        url: `v1/categories/${id}/`,
+        url: `v1/categories/${id}`,
         method: "PUT",
         body: updatedCategorieItem,
       }),
@@ -84,6 +100,8 @@ export const {
   useGetMenuQuery,
   useLazyGetMenuByIdQuery,
   useCreateMenuItemMutation,
+  useEditMenuItemMutation,
+  useDeleteMenuItemMutation,
   useGetCategoriesQuery,
   useLazyGetCategorieByIdQuery,
   useCreateCategorieItemMutation,

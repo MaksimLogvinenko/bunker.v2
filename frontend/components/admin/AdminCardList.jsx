@@ -3,6 +3,7 @@ import React from "react";
 import AdminCardItem from "./AdminCardItem";
 
 const AdminCardList = ({
+  setIsMode,
   menuItems,
   isLoading,
   isError,
@@ -11,6 +12,7 @@ const AdminCardList = ({
   setSearchText,
   setShowPopup,
   setCreateEditForm,
+  handleDeleteMenuItem,
 }) => {
   return (
     <>
@@ -25,7 +27,9 @@ const AdminCardList = ({
       />
       {isLoading && <p className="text-center mb-5">Завантаження...</p>}
       {isError && (
-        <p className="text-red-500 text-center mb-5">Помилка: {error?.status}</p>
+        <p className="text-red-500 text-center mb-5">
+          Помилка: {error?.status}
+        </p>
       )}
 
       {menuItems.length > 0 ? (
@@ -34,8 +38,10 @@ const AdminCardList = ({
             <AdminCardItem
               key={item.id}
               item={item}
+              setIsMode={setIsMode}
               setShowPopup={setShowPopup}
               setCreateEditForm={setCreateEditForm}
+              handleDeleteMenuItem={handleDeleteMenuItem}
             />
           ))}
         </div>

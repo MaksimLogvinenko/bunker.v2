@@ -6,12 +6,14 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 //api
 import {
-  useCreateCategorieItemMutation,
-  useCreateMenuItemMutation,
-  useDeleteCategorieItemMutation,
-  useEditCategorieItemMutation,
   useGetCategoriesQuery,
+  useCreateCategorieItemMutation,
+  useEditMenuItemMutation,
+  useEditCategorieItemMutation,
+  useDeleteCategorieItemMutation,
   useGetMenuQuery,
+  useCreateMenuItemMutation,
+  useDeleteMenuItemMutation,
 } from "@/store/api";
 //slices
 import { logout } from "@/store/authSlice";
@@ -61,6 +63,8 @@ export default function AdminPage() {
   const { data: cetegoriesItems, isLoading: loadingCategories } =
     useGetCategoriesQuery();
   const [createMenuItem] = useCreateMenuItemMutation();
+  const [editMenuItem] = useEditMenuItemMutation();
+  const [deleteMenuItem] = useDeleteMenuItemMutation();
   const [createCategorieItem] = useCreateCategorieItemMutation();
   const [editCategorieItem] = useEditCategorieItemMutation();
   const [deleteCategorieItem] = useDeleteCategorieItemMutation();
@@ -163,6 +167,32 @@ export default function AdminPage() {
     }
   };
 
+  const handleEditMenuItem = async (id) => {
+    const { id: _, created_at, ...formWithoutId } = createEditForm;
+
+    try {
+      await editMenuItem({
+        id,
+        updatedMenuItem: formWithoutId,
+      }).unwrap();
+      toast.success("Позицію змінено!");
+      setShowPopup(false);
+    } catch (err) {
+      toast.error("Помилка при редагуванні");
+      console.error("Помилка редагування позиції:", err);
+    }
+  };
+
+  const handleDeleteMenuItem = async (id) => {
+    try {
+      await deleteMenuItem(id).unwrap();
+      toast.success("Позицію видалено!");
+    } catch (err) {
+      toast.error("Помилка при видалені");
+      console.error("Помилка при видалені:", err);
+    }
+  };
+
   const handleCreateCategorieItem = async () => {
     try {
       if (createCategorieForm.name !== "") {
@@ -217,6 +247,7 @@ export default function AdminPage() {
           handleEditCategorieItem={handleEditCategorieItem}
         />
         <AdminPopup
+          isMode={isMode}
           showPopup={showPopup}
           setShowPopup={setShowPopup}
           createEditForm={createEditForm}
@@ -226,6 +257,7 @@ export default function AdminPage() {
           loadingCategories={loadingCategories}
           setCreateEditForm={setCreateEditForm}
           handleCreateMenuItem={handleCreateMenuItem}
+          handleEditMenuItem={handleEditMenuItem}
         />
         <div className="container">
           <div className="flex flex-col">
@@ -270,6 +302,7 @@ export default function AdminPage() {
               setShowCategoriePopup={setShowCategoriePopup}
             />
             <AdminCardList
+              setIsMode={setIsMode}
               menuItems={filteredItems}
               isLoading={isLoading}
               isError={isError}
@@ -278,6 +311,7 @@ export default function AdminPage() {
               setSearchText={setSearchText}
               setShowPopup={setShowPopup}
               setCreateEditForm={setCreateEditForm}
+              handleDeleteMenuItem={handleDeleteMenuItem}
             />
           </div>
         </div>

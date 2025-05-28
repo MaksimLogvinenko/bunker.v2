@@ -6,11 +6,18 @@ import { useLazyGetMenuByIdQuery } from "@/store/api";
 import { MdDelete } from "react-icons/md";
 import NoPhoto from "../../assets/img/menu/nophoto.jpg";
 
-const AdminCardItem = ({ item, setShowPopup, setCreateEditForm }) => {
+const AdminCardItem = ({
+  setIsMode,
+  item,
+  setShowPopup,
+  setCreateEditForm,
+  handleDeleteMenuItem,
+}) => {
   const [getMenuById, { data: menuItemsById, isLoading }] =
     useLazyGetMenuByIdQuery();
 
   const handleEditClick = async () => {
+    setIsMode("edit");
     const result = await getMenuById(item.id);
     setCreateEditForm(result.data);
     setShowPopup(true);
@@ -36,6 +43,11 @@ const AdminCardItem = ({ item, setShowPopup, setCreateEditForm }) => {
           </button>
           <button
             type="button"
+            onClick={() => {
+              if (window.confirm("Видалити позицію ?")) {
+                handleDeleteMenuItem(item.id);
+              }
+            }}
             className="flex items-center justify-center text-sm p-2 rounded-lg bg-red"
           >
             <MdDelete />
