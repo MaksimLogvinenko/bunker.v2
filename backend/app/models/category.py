@@ -9,5 +9,6 @@ class Category(Base):
     image_url = Column(String, nullable=True)
     name = Column(String(100))
     description = Column(String(500))
+    ordering = Column(Integer, default=1, server_default="1") 
 
     menu_items = relationship("MenuItem", back_populates="category", lazy='noload')

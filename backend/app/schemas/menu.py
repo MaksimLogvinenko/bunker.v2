@@ -12,6 +12,7 @@ class MenuItemCreate(BaseModel):
     is_new: bool = False
     ingredients: Optional[str] = None
     portion_size: Optional[str] = None
+    ordering: Optional[int] = 1 
 
 class MenuItemUpdate(BaseModel):
     name: Optional[str] = None
@@ -23,6 +24,7 @@ class MenuItemUpdate(BaseModel):
     is_new: Optional[bool] = None
     ingredients: Optional[str] = None
     portion_size: Optional[str] = None
+    ordering: Optional[int] = 1
 
 class MenuItemOut(BaseModel):
     id: int
@@ -36,6 +38,7 @@ class MenuItemOut(BaseModel):
     ingredients: Optional[str]
     portion_size: Optional[str]
     created_at: datetime
+    ordering: int
 
     model_config = {
         "from_attributes": True,

@@ -36,7 +36,7 @@ def get_menu_items(
 ) -> List[MenuItemOut]:
     query = (
         db.query(MenuItem)
-        .order_by(MenuItem.category_id)
+        .order_by(MenuItem.category_id, MenuItem.ordering)
         .offset(skip)
         .limit(limit)
     )
