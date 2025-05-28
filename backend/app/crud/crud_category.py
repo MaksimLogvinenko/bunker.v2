@@ -43,7 +43,7 @@ def get_categories(
 ) -> List[Category]:
     return (
         db.query(Category)
-        .order_by(Category.name)
+        .order_by(Category.ordering, Category.name)
         .offset(skip)
         .limit(limit)
         .all()
@@ -56,12 +56,15 @@ def get_categories_with_items(
 ) -> List[Category]:
     query = (
         db.query(Category)
-        .order_by(Category.name)
+        .order_by(Category.ordering, Category.name)
         .offset(skip)
         .limit(limit)
+        .options(joinedload(Category.menu_items))
     )
-    query = query.options(joinedload(Category.menu_items))
-    return query.all()
+    categories = query.all()
+    for category in categories:
+        category.menu_items.sort(key=lambda item: (item.ordering, item.id))
+    return categories
 
 
 def update_category(

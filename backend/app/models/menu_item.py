@@ -17,6 +17,7 @@ class MenuItem(Base):
     ingredients = Column(String(500), nullable=True)
     portion_size = Column(String(100), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
+    ordering = Column(Integer, default=1, server_default="1") 
     discounts = relationship("Discount", back_populates="menu_item")
 
     category = relationship("Category", back_populates="menu_items")

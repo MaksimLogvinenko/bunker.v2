@@ -8,7 +8,10 @@ def create_menu_item(
     db: Session,
     item_data: MenuItemCreate,
 ) -> MenuItem:
-    item = MenuItem(**item_data.model_dump())
+    data = item_data.model_dump()
+    if data.get("image_url") is not None:
+        data["image_url"] = str(data["image_url"])
+    item = MenuItem(**data)
     db.add(item)
     db.commit()
     db.refresh(item)
@@ -33,7 +36,7 @@ def get_menu_items(
 ) -> List[MenuItemOut]:
     query = (
         db.query(MenuItem)
-        .order_by(MenuItem.category_id)
+        .order_by(MenuItem.category_id, MenuItem.ordering)
         .offset(skip)
         .limit(limit)
     )
