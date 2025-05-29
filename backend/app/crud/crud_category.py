@@ -6,7 +6,10 @@ from app.schemas.category import CategoryCreate, CategoryUpdate
 from app.schemas.category import CategoryOut
 
 def create_category(db: Session, category: CategoryCreate) -> Category:
-    new_category = Category(**category.model_dump())
+    data = category.model_dump()
+    if data.get("image_url") is not None:
+        data["image_url"] = str(data["image_url"])
+    new_category = Category(**data)
     db.add(new_category)
     db.commit()
     db.refresh(new_category)
@@ -78,6 +81,9 @@ def update_category(
     if not category:
         return None
     
+    if "image_url" in update_data and update_data["image_url"] is not None:
+        update_data["image_url"] = str(update_data["image_url"])
+
     for key, value in update_data.items():
         setattr(category, key, value)
 
