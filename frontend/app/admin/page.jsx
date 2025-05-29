@@ -41,6 +41,7 @@ export default function AdminPage() {
     name: "",
     description: "",
     image_url: "",
+    ordering: 0,
   };
 
   const initialMenuForm = {
@@ -53,6 +54,7 @@ export default function AdminPage() {
     is_new: false,
     ingredients: "",
     portion_size: "",
+    ordering: 0,
   };
 
   const [createCategorieForm, setCreateCategorieForm] = React.useState(
@@ -267,6 +269,7 @@ export default function AdminPage() {
                   type="button"
                   className="p-5 bg-gray rounded-xl duration-300 active:scale-95"
                   onClick={() => {
+                    setIsMode("add");
                     setCreateEditForm(initialMenuForm);
                     setShowPopup(true);
                   }}

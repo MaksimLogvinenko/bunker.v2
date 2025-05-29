@@ -28,8 +28,10 @@ const AdminCardItem = ({
       <Image
         src={item.image_url === null ? NoPhoto : item.image_url}
         alt={`Кафе Bunker - ${item.name} | місто Фастів`}
-        placeholder="blur"
-        className="w-full h-full object-cover object-center"
+        // placeholder="blur"
+        className="w-full h-[150px] object-cover object-center"
+        width={300}
+        height={300}
       />
       <div className="p-3">
         <h2 className="text-sm mb-2">{item.name}</h2>
