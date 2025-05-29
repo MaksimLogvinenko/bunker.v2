@@ -58,7 +58,11 @@ def update_menu_item(
 ) -> MenuItem:
     item = get_menu_item_by_id(db, item_id)
 
-    for key, value in item_data.model_dump(exclude_unset=True).items():
+    update_data = item_data.model_dump(exclude_unset=True)
+    if "image_url" in update_data and update_data["image_url"] is not None:
+        update_data["image_url"] = str(update_data["image_url"])
+
+    for key, value in update_data.items():
         setattr(item, key, value)
 
     item = db.query(MenuItem).get(item_id)
