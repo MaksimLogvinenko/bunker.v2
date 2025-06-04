@@ -1,9 +1,9 @@
 from fastapi import HTTPException, status
 from typing import List, Optional
-from sqlalchemy.orm import Session, joinedload, lazyload
+from sqlalchemy.orm import Session, joinedload
 from app.models.category import Category
 from app.schemas.category import CategoryCreate, CategoryUpdate
-from app.schemas.category import CategoryOut
+from app.models.menu_item import MenuItem
 
 def create_category(db: Session, category: CategoryCreate) -> Category:
     data = category.model_dump()
@@ -93,5 +93,6 @@ def update_category(
 
 def delete_category(db: Session, category_id: int) -> None:
     category = get_category_by_id(db, category_id)
+    db.query(MenuItem).filter(MenuItem.category_id == category_id).delete()
     db.delete(category)
     db.commit()
