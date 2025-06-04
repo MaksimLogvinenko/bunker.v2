@@ -26,6 +26,7 @@ const GalleryPhotos = () => {
       >
         {galleryList.map((item, index) => (
           <a
+            key={index}
             className="relative flex w-[calc(33.3333%_-_14px)] h-[300px] object-cover object-center rounded-md group lg:h-[250px] md:h-[200px] sm:w-[calc(50%_-_10px)] sm:h-[150px]"
             href={item.img.src}
           >

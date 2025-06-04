@@ -13,7 +13,7 @@ import MainImg from "@/assets/img/home/main.png";
 import About1Img from "@/assets/img/home/about-1.jpg";
 import About2Img from "@/assets/img/home/about-2.png";
 import About3Img from "@/assets/img/home/about-3.png";
-import ChooseImg from "@/assets/img/home/chose.png";
+// import ChooseImg from "@/assets/img/home/chose.png";
 import StockBgImg from "@/assets/img/home/stock-bg.jpg";
 import Stock1Img from "@/assets/img/home/stock-1.png";
 import Stock2Img from "@/assets/img/home/stock-2.png";
@@ -22,8 +22,8 @@ import Stock4Img from "@/assets/img/home/stock-4.png";
 import CommentFlowerImg from "@/assets/img/home/comment-flower.png";
 import { FaViber } from "react-icons/fa";
 import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
-import { MdOutlineFreeBreakfast, MdOutlineDinnerDining } from "react-icons/md";
-import { LuBeef } from "react-icons/lu";
+// import { MdOutlineFreeBreakfast, MdOutlineDinnerDining } from "react-icons/md";
+// import { LuBeef } from "react-icons/lu";
 
 export const metadata = {
   title: "Кафе Bunker - Фастів | Головна",
@@ -92,22 +92,27 @@ export default function Home() {
                   <span className="text-primary">Ко</span>ротко про наше кафе
                 </h2>
                 <p className="paragraph-section mb-6">
-                  Кафе Bunker з дружньою атмосферою розташоване недалеко від
-                  центра міста. Ми завжди радіємо нашим гостям і готові смачно
-                  їх нагодувати! Це місце в якому можна гарно відпочити,
-                  зустрітися з друзями, та відволіктися від буденних справ. Ти
-                  точно захочеш сюди повернутися.
+                  Бункер кафе у Фастові – це місце, де все по-справжньому! Твій
+                  локальний бар, де ігри, живі розмови та сміливий дизайн
+                  створюють атмосферу, що чіпляє з перших секунд. "Бункер" – це
+                  не просто назва: вона про твій простір для відпочинку і про
+                  стіни, що дарували захист у найважчі періоди, і вистояли попри
+                  складнощі . Ми сильніші, ніж будь-коли, і готові стати твоєю
+                  новою точкою збору. Приєднуйся до руху!
                 </p>
                 <ul className="flex flex-col gap-6 mb-8 ml-[10px]">
-                  <li className="list-['\2713'] pl-[10px]">Швидка доставка</li>
                   <li className="list-['\2713'] pl-[10px]">
-                    Найсмачніші комплексні обіди по місту в будь який день
+                    Драйв, ігри, справжні розмови
+                  </li>
+                  <li className="list-['\2713'] pl-[10px]">Своя атмосфера</li>
+                  <li className="list-['\2713'] pl-[10px]">
+                    Смачна і зрозуміла їжа
                   </li>
                   <li className="list-['\2713'] pl-[10px]">
-                    Великі гриль сети для компанії
+                    Фірмові настоянки
                   </li>
                   <li className="list-['\2713'] pl-[10px]">
-                    Вишукана європейська кухня
+                    Історія, яку ти твориш
                   </li>
                 </ul>
                 <Link href="/about" className="btn-primary w-[190px] sm:w-full">
@@ -157,7 +162,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-[70px] sm:py-[50px]">
+        {/* <section className="py-[70px] sm:py-[50px]">
           <div className="container">
             <div className="flex items-center gap-[100px] md:flex-col md:gap-[50px]">
               <div className="w-1/2 md:w-full md:mx-auto">
@@ -217,7 +222,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="py-[70px] sm:py-[50px]">
           <div
@@ -230,11 +235,11 @@ export default function Home() {
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
                     src={Stock1Img}
-                    alt="Bunker cafe - Швидка доставка"
+                    alt="Bunker cafe - Твій простір"
                     placeholder="blur"
                   />
                   <h4 className="text-xl font-bold mb-6 text-center lg:text-xl md:mb-5 sm:mb-2">
-                    Швидка доставка
+                    Твій простір
                   </h4>
                   {/* <h5 className="text-[40px] leading-[48px] font-bold lg:text-3xl">
                   420
@@ -244,11 +249,11 @@ export default function Home() {
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
                     src={Stock2Img}
-                    alt="Bunker cafe - Найсмачніші комплексні обіди по місту в будь який день"
+                    alt="Bunker cafe - Завжди по-справжньому"
                     placeholder="blur"
                   />
                   <h4 className="text-xl font-bold mb-6 text-center lg:text-xl md:mb-5 sm:mb-2">
-                    Найсмачніші комплексні обіди по місту в будь який день
+                    Завжди по-справжньому
                   </h4>
                   {/* <h5 className="text-[40px] leading-[48px] font-bold lg:text-3xl">
                   320
@@ -258,11 +263,11 @@ export default function Home() {
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
                     src={Stock3Img}
-                    alt="Bunker cafe - Великі гриль сети для компанії"
+                    alt="Bunker cafe - Ігри, Розмови, Вайб"
                     placeholder="blur"
                   />
                   <h4 className="text-xl font-bold mb-6 text-center lg:text-xl md:mb-5 sm:mb-2">
-                    Великі гриль сети для компанії
+                    Ігри, Розмови, Вайб
                   </h4>
                   {/* <h5 className="text-[40px] leading-[48px] font-bold lg:text-3xl">
                   30+
@@ -272,11 +277,11 @@ export default function Home() {
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
                     src={Stock4Img}
-                    alt="Bunker cafe - Вишукана європейська кухня"
+                    alt="Bunker cafe - Стіни, що пам'ятають"
                     placeholder="blur"
                   />
                   <h4 className="text-xl font-bold mb-6 text-center lg:text-xl md:mb-5 sm:mb-2">
-                    Вишукана європейська кухня
+                    Стіни, що пам'ятають
                   </h4>
                   {/* <h5 className="text-[40px] leading-[48px] font-bold lg:text-3xl">
                   220
