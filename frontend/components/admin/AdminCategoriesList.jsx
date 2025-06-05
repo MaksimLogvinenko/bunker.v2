@@ -43,7 +43,7 @@ const AdminCategoriesList = ({
               type="button"
               className="bg-red p-1 rounded-lg"
               onClick={() => {
-                if (window.confirm("Видалити категорію ?")) {
+                if (window.confirm("Видалити категорію разом з стравами ?")) {
                   handleDeleteCategorieItem(item.id);
                 }
               }}

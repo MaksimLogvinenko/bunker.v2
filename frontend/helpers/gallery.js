@@ -8,7 +8,7 @@ import Gallery7Img from "../assets/img/gallery/gallery-7.jpg";
 import Gallery8Img from "../assets/img/gallery/gallery-8.jpg";
 import Gallery9Img from "../assets/img/gallery/gallery-9.jpg";
 import Gallery10Img from "../assets/img/gallery/gallery-10.jpg";
-import Gallery11Img from "../assets/img/gallery/gallery-11.jpg";
+// import Gallery11Img from "../assets/img/gallery/gallery-11.jpg";
 import Gallery12Img from "../assets/img/gallery/gallery-12.jpg";
 import Gallery13Img from "../assets/img/gallery/gallery-13.jpg";
 import Gallery14Img from "../assets/img/gallery/gallery-14.jpg";
@@ -24,7 +24,7 @@ export const galleryList = [
   },
   {
     img: Gallery3Img,
-    alt: "Літня площадка",
+    alt: "Велика зала",
   },
   {
     img: Gallery4Img,
@@ -54,10 +54,10 @@ export const galleryList = [
     img: Gallery10Img,
     alt: "Барна стійка",
   },
-  {
-    img: Gallery11Img,
-    alt: "Велика зала",
-  },
+  // {
+  //   img: Gallery11Img,
+  //   alt: "Велика зала",
+  // },
   {
     img: Gallery12Img,
     alt: "Бар",

@@ -37,7 +37,7 @@ const CategorySlider = () => {
       }}
       className="category-slider w-full h-full"
     >
-      {galleryList.slice(3, 9).map((item, index) => (
+      {galleryList.slice(0, 5).map((item, index) => (
         <SwiperSlide key={item.alt + index}>
           <img
             className="w-full h-[330px] object-cover object-center rounded-md lg:h-[280px] sm:h-[230px]"

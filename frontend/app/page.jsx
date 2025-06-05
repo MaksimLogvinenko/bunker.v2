@@ -234,7 +234,7 @@ export default function Home() {
                 <div className="flex flex-col items-center md:w-[calc(50%_-_10px)]">
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
-                    src={Stock1Img}
+                    src={Stock3Img}
                     alt="Bunker cafe - Твій простір"
                     placeholder="blur"
                   />
@@ -262,7 +262,7 @@ export default function Home() {
                 <div className="flex flex-col items-center md:w-[calc(50%_-_10px)]">
                   <Image
                     className="w-[120px] mb-6 lg:w-[80px] md:mb-5"
-                    src={Stock3Img}
+                    src={Stock1Img}
                     alt="Bunker cafe - Ігри, Розмови, Вайб"
                     placeholder="blur"
                   />
