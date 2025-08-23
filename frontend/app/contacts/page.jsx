@@ -54,7 +54,7 @@ const Contacts = () => {
                 ))}
                 <h6 className="text-xl sm:text-base">
                   Графік роботи:
-                  <span className="text-primary ml-2">Пн-Нд: 9:00 — 22:00</span>
+                  <span className="text-primary ml-2">Пн-Нд: 11:00 — 23:00</span>
                 </h6>
               </div>
             </div>

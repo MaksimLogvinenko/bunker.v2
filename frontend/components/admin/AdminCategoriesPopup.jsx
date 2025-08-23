@@ -37,6 +37,18 @@ const AdminCategoriesPopup = ({
             onChange={handleChangeCategorie}
           />
         </div>
+        <div className="flex flex-col text-sm">
+          <label htmlFor="name">Позиція у списку</label>
+          <input
+            type="number"
+            id="ordering"
+            name="ordering"
+            className="bg-transparent p-1 border border-gray outline-none rounded-lg"
+            autoComplete="off"
+            value={createCategorieForm.ordering}
+            onChange={handleChangeCategorie}
+          />
+        </div>
 
         <button
           type="button"

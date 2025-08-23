@@ -22,8 +22,7 @@ const page = () => {
             <div className="flex flex-col text-center">
               <h3 className="subtitle-section">Menu</h3>
               <h1 className="text-white text-[60px] leading-[68px] font-bold mb-8 sm:text-4xl sm:mb-5">
-                <span className="text-primary">См</span>акуйте найкраще разом з
-                нами
+                <span className="text-primary">Об</span>ирай улюблений смаколик
               </h1>
             </div>
           </div>

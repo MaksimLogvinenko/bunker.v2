@@ -36,7 +36,7 @@ export default function Home() {
     <>
       <main>
         <section
-          className="flex flex-col justify-center min-h-[100dvh] h-full bg-no-repeat bg-cover bg-center bg-blend-multiply bg-black/90"
+          className="flex flex-col justify-center py-32 h-full bg-no-repeat bg-cover bg-center bg-blend-multiply bg-black/90 sm:py-44"
           style={{ backgroundImage: `url(${MainBgImg.src})` }}
         >
           <div className="container">
@@ -57,7 +57,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col max-w-[470px] md:max-w-full">
-                  <h3 className="subtitle-section">Welcome to Bunker Cafe!</h3>
+                  {/* <h3 className="subtitle-section">Welcome to Bunker Cafe!</h3> */}
                   <h1 className="text-white text-[60px] leading-[68px] font-bold mb-8 sm:text-4xl sm:mb-5">
                     <span className="text-primary">Ласкаво</span> просимо до
                     Кафе Bunker
@@ -348,7 +348,7 @@ export default function Home() {
                   <h6 className="text-xl sm:text-base">
                     Графік роботи:
                     <span className="text-primary ml-2">
-                      Пн-Нд: 9:00 — 22:00
+                      Пн-Нд: 11:00 — 23:00
                     </span>
                   </h6>
                 </div>

@@ -136,6 +136,18 @@ const AdminPopup = ({
             onChange={handleChangeFile}
           />
         </div>
+        <div className="flex flex-col text-sm">
+          <label htmlFor="price">Позиція у списку</label>
+          <input
+            type="number"
+            id="ordering"
+            name="ordering"
+            className="bg-transparent p-1 border border-gray outline-none rounded-lg"
+            autoComplete="off"
+            value={createEditForm.ordering}
+            onChange={handleChange}
+          />
+        </div>
         <div className="flex items-center gap-5 text-sm">
           <label htmlFor="is_new">Новинка</label>
           <input

@@ -20,11 +20,11 @@ const Footer = () => {
       <div className="container">
         <div className="flex justify-between items-start gap-10 border-t border-primary py-[65px] md:gap-5 sm:py-10 sm:flex-col sm:gap-10">
           <div className="flex-col w-1/3 sm:w-full">
-            <h3 className="text-2xl font-bold mb-6 sm:mb-3">Про нас</h3>
+            {/* <h3 className="text-2xl font-bold mb-6 sm:mb-3">Про нас</h3>
             <p className="font-inter mb-8 md:text-xs">
               В кафе «Bunker» на вас чекає вишукана кухня, привітний персонал і
               приємна атмосфера.
-            </p>
+            </p> */}
             <div className="flex items-start">
               <div className="flex items-center justify-center w-[75px] h-[75px] rounded-md bg-primary mr-4 md:w-10 md:h-10">
                 <PiClockClockwise className="text-[40px] md:text-2xl" />
@@ -32,7 +32,7 @@ const Footer = () => {
               <div className="flex flex-col">
                 <h4 className="font-inter text-lg">Графік роботи</h4>
                 <span className="text-sm font-inter">
-                  Пн - Нд (9:00 - 22:00)
+                  Пн - Нд (11:00 - 23:00)
                 </span>
               </div>
             </div>

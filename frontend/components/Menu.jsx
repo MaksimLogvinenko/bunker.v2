@@ -75,7 +75,8 @@ const Menu = () => {
                 </h4>
                 <p className="tex-sm text-center mb-2">{item.ingredients}</p>
                 <strong className="text-xl text-center font-bold">
-                  {item.price} грн | {item.portion_size}
+                  {item.price} грн {item.portion_size !== "" && "|"}{" "}
+                  {item.portion_size}
                 </strong>
               </div>
             ))}
