@@ -8,7 +8,7 @@ import NewMenuItems from "@/components/NewMenuItems";
 import MapBox from "@/components/MapBox";
 import CommentSlider from "@/components/CommentSlider";
 //img
-import MainBgImg from "@/assets/img/home/main-bg.jpg";
+import MainBgImg from "@/assets/img/gallery/gallery-1.jpg";
 import MainImg from "@/assets/img/home/main.png";
 import About1Img from "@/assets/img/home/about-1.jpg";
 import About2Img from "@/assets/img/home/about-2.png";
@@ -36,7 +36,7 @@ export default function Home() {
     <>
       <main>
         <section
-          className="flex flex-col justify-center py-32 h-full bg-no-repeat bg-cover bg-center bg-blend-multiply bg-black/90 sm:py-44"
+          className="flex flex-col justify-center py-32 h-full bg-no-repeat bg-cover bg-center bg-blend-multiply bg-black/60 sm:py-44"
           style={{ backgroundImage: `url(${MainBgImg.src})` }}
         >
           <div className="container">
