@@ -7,10 +7,14 @@ const AdminCategoriesPopup = ({
   createCategorieForm,
   showCategoriePopup,
   setShowCategoriePopup,
+  loadingcCeateCategorieItem,
+  loadingEditCategorieItem,
   handleChangeCategorie,
   handleCreateCategorieItem,
   handleEditCategorieItem,
 }) => {
+  const isLoading = loadingcCeateCategorieItem || loadingEditCategorieItem;
+
   return (
     <div
       className={`${
@@ -52,14 +56,15 @@ const AdminCategoriesPopup = ({
 
         <button
           type="button"
-          className="btn btn-primary"
+          disabled={isLoading}
+          className={`${isLoading ? "btn-primary-disable" : "btn-primary"} btn`}
           onClick={() =>
             isMode === "add"
               ? handleCreateCategorieItem()
               : handleEditCategorieItem(createCategorieForm.id)
           }
         >
-          Зберегти
+          {isLoading ? "Збереження..." : "Зберегти"}
         </button>
       </div>
     </div>

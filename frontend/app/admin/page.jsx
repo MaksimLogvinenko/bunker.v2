@@ -64,11 +64,15 @@ export default function AdminPage() {
   const { data: menuItems, isLoading, isError, error } = useGetMenuQuery();
   const { data: cetegoriesItems, isLoading: loadingCategories } =
     useGetCategoriesQuery();
-  const [createMenuItem] = useCreateMenuItemMutation();
-  const [editMenuItem] = useEditMenuItemMutation();
+  const [createMenuItem, { isLoading: loadingCreateMenuItem }] =
+    useCreateMenuItemMutation();
+  const [editMenuItem, { isLoading: loadingEditMenuItem }] =
+    useEditMenuItemMutation();
   const [deleteMenuItem] = useDeleteMenuItemMutation();
-  const [createCategorieItem] = useCreateCategorieItemMutation();
-  const [editCategorieItem] = useEditCategorieItemMutation();
+  const [createCategorieItem, { isLoading: loadingcCeateCategorieItem }] =
+    useCreateCategorieItemMutation();
+  const [editCategorieItem, { isLoading: loadingEditCategorieItem }] =
+    useEditCategorieItemMutation();
   const [deleteCategorieItem] = useDeleteCategorieItemMutation();
 
   React.useEffect(() => {
@@ -107,6 +111,7 @@ export default function AdminPage() {
       [name]: value,
     }));
   };
+
   const handleChangeCategorie = (e) => {
     const { name, value } = e.target;
 
@@ -244,6 +249,8 @@ export default function AdminPage() {
           createCategorieForm={createCategorieForm}
           showCategoriePopup={showCategoriePopup}
           setShowCategoriePopup={setShowCategoriePopup}
+          loadingcCeateCategorieItem={loadingcCeateCategorieItem}
+          loadingEditCategorieItem={loadingEditCategorieItem}
           handleChangeCategorie={handleChangeCategorie}
           handleCreateCategorieItem={handleCreateCategorieItem}
           handleEditCategorieItem={handleEditCategorieItem}
@@ -257,6 +264,8 @@ export default function AdminPage() {
           handleChangeFile={handleChangeFile}
           cetegoriesItems={cetegoriesItems}
           loadingCategories={loadingCategories}
+          loadingCreateMenuItem={loadingCreateMenuItem}
+          loadingEditMenuItem={loadingEditMenuItem}
           setCreateEditForm={setCreateEditForm}
           handleCreateMenuItem={handleCreateMenuItem}
           handleEditMenuItem={handleEditMenuItem}

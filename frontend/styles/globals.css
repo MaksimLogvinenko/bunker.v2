@@ -21,6 +21,9 @@
   .btn-primary {
     @apply inline-flex justify-center items-center w-full bg-primary p-[18px] rounded-md text-white text-center font-inter outline-none duration-300 active:scale-95 hover:bg-[#be5737] sm:p-4 sm:text-sm;
   }
+  .btn-primary-disable {
+    @apply inline-flex justify-center items-center w-full bg-primary/50 p-[18px] rounded-md text-white text-center font-inter outline-none duration-300 active:scale-95 hover:bg-[#be5737] sm:p-4 sm:text-sm;
+  }
   .title-section {
     @apply text-[48px] font-bold leading-[56px];
   }

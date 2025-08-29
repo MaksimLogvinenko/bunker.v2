@@ -11,10 +11,14 @@ const AdminPopup = ({
   handleChangeFile,
   cetegoriesItems,
   loadingCategories,
+  loadingCreateMenuItem,
+  loadingEditMenuItem,
   setCreateEditForm,
   handleCreateMenuItem,
   handleEditMenuItem,
 }) => {
+  const isLoading = loadingCreateMenuItem || loadingEditMenuItem;
+
   return (
     <div
       className={`${
@@ -168,14 +172,15 @@ const AdminPopup = ({
         </div>
         <button
           type="button"
+          disabled={isLoading}
           onClick={() =>
             isMode === "add"
               ? handleCreateMenuItem()
               : handleEditMenuItem(createEditForm.id)
           }
-          className="btn btn-primary"
+          className={`${isLoading ? "btn-primary-disable" : "btn-primary"} btn`}
         >
-          Зберегти
+          {isLoading ? "Збереження..." : "Зберегти"}
         </button>
       </div>
     </div>
