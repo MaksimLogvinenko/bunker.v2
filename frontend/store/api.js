@@ -30,7 +30,7 @@ export const api = createApi({
       },
     }),
     getMenu: builder.query({
-      query: () => `v1/menu-items/`,
+      query: () => `v1/menu-items/?limit=1000`,
       providesTags: ["Menu"],
     }),
     getMenuById: builder.query({
