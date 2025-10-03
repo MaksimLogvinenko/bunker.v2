@@ -41,7 +41,7 @@ const Header = ({ menuList, setShowMenu }) => {
             </ul>
             <a
               className="text-lg duration-300 text-white hover:text-primary sm:text-base"
-              href="tel:380933817902"
+              href="tel:0933817902"
             >
               +38 093 381 7902
             </a>

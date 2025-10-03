@@ -77,7 +77,7 @@ export const social = {
 export const contacts = [
   {
     icon: AiOutlinePhone,
-    link: "tel:380933817902",
+    link: "tel:0933817902",
     title: "+38 (093) 381 7902",
     target: "_self",
   },
